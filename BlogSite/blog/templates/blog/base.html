@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog</title>
+   <!-- Bootstrap -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Medium Style Editor    -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <script>var editor = new MediumEditor('.editable');</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|ZCOOL+KuaiLe" rel="stylesheet">
+  </head>
+  <body>
+  <!-- navbar -->
+
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark techfont custom-nabvar mr-auto ">
+        <div class="container">
+          <a class="nav-link" class="navbar-brand bigbrand" href="{% url 'post_list' %}">Blogger</a>
+          <a class="nav-link" href="{% url  'about' %}">About</a>
+          <a class="nav-link" href="https://github.com/saksham22/">My Github</a>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="https://github.com/saksham22/">My Github</a></li>
+          </ul>
+        <ul class="navbar-nav ">
+            {%if user.is_authenticated%}
+            <li><a href="{% url 'post_view'%}">New Post</a></li>
+            <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>
+            <li><a href="{% url 'logout' %}">logout</a></li>
+            <li><a>Welcome: {{ user.username }}</a></li>
+            {%else%}
+            <li><a href="{%url 'login' %}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+
+            {% endif %}
+
+        </<ul>
+
+
+
+
+
+        </div>
+      </nav>
+    </div>
+
+
+<!-- content block -->
+<!-- <div class="editable container"></div> -->
+<!-- <script>var editor = new MediumEditor('.editable');</script> -->
+{% block content%}
+<script>var editor = new MediumEditor('.editable');</script>
+
+{% endblock %}
+  </body>
+</html>
