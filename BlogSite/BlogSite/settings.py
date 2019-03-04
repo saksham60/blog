@@ -25,7 +25,7 @@ SECRET_KEY = 'gsask_crr_n#%t0j)*+%5g7yd&(1w-vro*i)c$6)kf+s^-wm85'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['devsak.herokuapp.com']
 
 
 # Application definition
