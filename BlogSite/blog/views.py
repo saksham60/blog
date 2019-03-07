@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from blog.forms import PostForm,CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-
+from blog.tweet import tweet_joke as tfn
 # Create your views here.
 class AboutView(TemplateView):
     template_name = 'about.html'
@@ -40,6 +40,13 @@ class DraftListView(LoginRequiredMixin,ListView):
     model = Post
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull=True).order_by('created_date')
+#
+# class TwitterView(TemplateView):
+#
+#     template_name = 'blog/post_list.html'
+def TwitterView(request):
+    tfn.tweet_fn()
+    return redirect('post_list')
 
 def add_comment_to_post(request,pk):
     post = get_object_or_404(Post,pk=pk)
