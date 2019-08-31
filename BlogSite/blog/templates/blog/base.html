@@ -31,12 +31,12 @@
           </ul>
         <ul class="navbar-nav ">
             {%if user.is_authenticated%}
-            <li><a href="{% url 'post_view'%}">New Post </a></li>
-            <li><a href="{% url 'post_draft_list' %}"> Drafts </a></li>
-            <li><a href="{% url 'logout' %}"> logout </a></li>
-            <li><a>Welcome: {{ user.username }} </a></li>
+            <li><a href="{% url 'post_view'%}">New Post </a> </li>
+            <li><a href="{% url 'post_draft_list' %}"> Drafts </a> </li>
+            <li><a href="{% url 'logout' %}"> logout </a> </li>
+            <li><a>Welcome: {{ user.username }} </a> </li>
             {%else%}
-            <li><a href="{%url 'login' %}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+            <li> <a href="{%url 'login' %}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
 
             {% endif %}
 
