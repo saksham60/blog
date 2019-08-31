@@ -29,7 +29,17 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="https://github.com/saksham22/">My Github</a></li>
           </ul>
-        <ul class="navbar-nav ">
+          {%if user.is_authenticated%}
+          <a href="{% url 'post_view'%}">New Post </a>
+          <a href="{% url 'post_draft_list' %}"> Drafts </a>
+          <a href="{% url 'logout' %}"> logout </a>
+          <a>Welcome: {{ user.username }}</a>
+          {%else%}
+          <a href="{%url 'login' %}"><span class="glyphicon glyphicon-user"></span> Login</a>
+
+          {% endif %}
+
+        <!-- <ul class="navbar-nav ">
             {%if user.is_authenticated%}
             <li><a href="{% url 'post_view'%}">New Post </a> </li>
             <li><a href="{% url 'post_draft_list' %}"> Drafts </a> </li>
@@ -40,7 +50,7 @@
 
             {% endif %}
 
-        </<ul>
+        </<ul> -->
 
 
 
